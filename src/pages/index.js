@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { FeatureSection } from "@/components/sections/FeatureSection";
+import Image from "next/image";
 import {
   Header,
   HeroSection,
@@ -38,7 +39,7 @@ export default function Home() {
       <div
         style={{
            position: "relative",
-    backgroundImage: "url('./ADAMS JOURNAL.png')",
+    backgroundImage: "url('/ADAMS JOURNAL.png')",
     minHeight: "100vh",
    // optional: default text color on dark background
         }}
@@ -68,7 +69,7 @@ export default function Home() {
           }}
           title="The Adams Journal"
           titleClassName="text-gray-900 dark:text-gray-100"
-          description="Dig through the crates with us – honest reviews, rare finds, and sonic treasures. Whether you're a crate-digger or a casual spinner, we've got your groove."
+          description="Dig through the crates with us – honest reviews, rare finds, and sonic treasures. Whether you&apos;re a crate-digger or a casual spinner, we&apos;ve got your groove."
            className = "text-gray-300 dark:text-gray-100"
           buttons={[
             {
@@ -151,11 +152,13 @@ export default function Home() {
               The goal of this publication is to enrich readers with knowledge they may not have had before and provide information they can share with others.
             </p>
             <div className="mt-8 flex justify-center">
-              <img
-                src="./mattuglyahh.png"
-                alt="Author"
-                className="w-48 h-48 rounded-full object-cover shadow-lg"
-              />
+              <Image
+  src="/mattuglyahh.png"
+  alt="Author"
+  width={192}       // 48 * 4 (tailwind width 48 = 12rem = 192px)
+  height={192}      // same as width for square
+  className="rounded-full object-cover shadow-lg"
+/>
             </div>
           </div>
         </section>

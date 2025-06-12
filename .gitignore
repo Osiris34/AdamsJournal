@@ -9,6 +9,20 @@ dist
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+node_modules
+.next
+dist
+.DS_Store
+.env
+public/assets
+*.log
+*.zip
+*.mp4
+*.mov
+*.png
+*.jpg
+
+
 
 # testing
 /coverage
