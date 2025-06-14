@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";   // <-- import Image here
+import Image from "next/image";
 import { FeatureSection } from "@/components/sections/FeatureSection";
 import {
   Header,
@@ -11,6 +11,7 @@ import {
   LargeFeatureSection,
   CtaSection,
 } from "../components/sections";
+import { TopArtistsSection } from "@/components/sections/TopArtistsSection";
 import { articles } from "@/data/articles";
 import {
   header,
@@ -20,8 +21,6 @@ import {
   clients,
   footer,
 } from "@/data";
-
-import { TopArtistsSection } from "@/components/sections/TopArtistsSection";
 import { highlightedArtists } from "@/data/features";
 
 export default function Home() {
@@ -35,7 +34,6 @@ export default function Home() {
         />
       </Head>
 
-      {/* Background wrapper for entire page */}
       <div
         style={{
           position: "relative",
@@ -66,7 +64,7 @@ export default function Home() {
           }}
           title="The Adams Journal"
           titleClassName="text-gray-900 dark:text-gray-100"
-          description={`Dig through the crates with us – honest reviews, rare finds, and sonic treasures. Whether you're a crate-digger or a casual spinner, we've got your groove.`}
+          description="Dig through the crates with us – honest reviews, rare finds, and sonic treasures. Whether you're a crate-digger or a casual spinner, we've got your groove."
           className="text-gray-300 dark:text-gray-100"
           buttons={[
             {
@@ -85,8 +83,6 @@ export default function Home() {
           clientsLabel="Trusted by Music Lovers Everywhere"
           clients={clients}
         />
-
-        {/* ... rest of your sections unchanged ... */}
 
         {/* About Section */}
         <section id="about" className="bg-gray-100 py-16">
@@ -110,11 +106,10 @@ export default function Home() {
           </div>
         </section>
 
-
         {/* Blog Preview */}
         <section id="blog" className="bg-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6"> The Blog</h2>
+            <h2 className="text-4xl font-bold mb-6">The Blog</h2>
             <p className="text-gray-600 max-w-xl mx-auto mb-8">
               Tips, stories, and behind-the-scenes from the music world.
             </p>
@@ -124,7 +119,8 @@ export default function Home() {
               image={{
                 src: "./vinly-pic.jpg",
                 alt: "Blog Feature",
-                className: "w-full object-contain -rotate-3 hover:rotate-0 transition-all",
+                className:
+                  "w-full object-contain -rotate-3 hover:rotate-0 transition-all",
               }}
             />
           </div>
@@ -137,7 +133,6 @@ export default function Home() {
             <p className="text-gray-600 max-w-xl mx-auto mb-8">
               Deep dives into classic albums, hidden gems, and fresh spins from today's artists.
             </p>
-
             <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
               {articles.slice(0, 3).map((article) => (
                 <div
@@ -146,13 +141,15 @@ export default function Home() {
                 >
                   <h3 className="text-2xl font-semibold mb-2">{article.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
-                  <Link href={`/articles/${article.slug}`} className="text-blue-600 font-medium">
+                  <Link
+                    href={`/articles/${article.slug}`}
+                    className="text-blue-600 font-medium"
+                  >
                     Read More →
                   </Link>
                 </div>
               ))}
             </div>
-
             <div className="mt-10">
               <Link href="/articles" className="text-black font-bold underline">
                 View All Articles
@@ -166,8 +163,6 @@ export default function Home() {
           id="newsletter"
           title="Get the Drop on New Vinyl Reviews"
           description="Subscribe to our newsletter for weekly drops, discounts, and exclusive vinyl picks."
-          
-          
         />
 
         {/* Footer */}
