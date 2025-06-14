@@ -1,7 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 import { FeatureSection } from "@/components/sections/FeatureSection";
+import Image from "next/image";
 import {
   Header,
   HeroSection,
@@ -11,7 +13,6 @@ import {
   LargeFeatureSection,
   CtaSection,
 } from "../components/sections";
-import { TopArtistsSection } from "@/components/sections/TopArtistsSection";
 import { articles } from "@/data/articles";
 import {
   header,
@@ -21,6 +22,8 @@ import {
   clients,
   footer,
 } from "@/data";
+
+import { TopArtistsSection } from "@/components/sections/TopArtistsSection";
 import { highlightedArtists } from "@/data/features";
 
 export default function Home() {
@@ -34,17 +37,21 @@ export default function Home() {
         />
       </Head>
 
+      {/* Background wrapper for entire page */}
       <div
         style={{
-          position: "relative",
-          backgroundImage: "url('/ADAMS JOURNAL.png')",
-          minHeight: "100vh",
+           position: "relative",
+    backgroundImage: "url('/ADAMS JOURNAL.png')",
+    minHeight: "100vh",
+   // optional: default text color on dark background
         }}
       >
+        
         <Header
           logo={header.logo}
           links={[
             { label: "Home", href: "#home" },
+            //{ label: "Reviews", href: "#featured-reviews" },
             { label: "Top Picks", href: "#top-picks" },
             { label: "About", href: "#about" },
             { label: "Blog", href: "#blog" },
@@ -64,8 +71,8 @@ export default function Home() {
           }}
           title="The Adams Journal"
           titleClassName="text-gray-900 dark:text-gray-100"
-          description="Dig through the crates with us – honest reviews, rare finds, and sonic treasures. Whether you're a crate-digger or a casual spinner, we've got your groove."
-          className="text-gray-300 dark:text-gray-100"
+          description="Dig through the crates with us – honest reviews, rare finds, and sonic treasures. Whether you&apos;re a crate-digger or a casual spinner, we&apos;ve got your groove."
+           className = "text-gray-300 dark:text-gray-100"
           buttons={[
             {
               href: "#newsletter",
@@ -80,9 +87,61 @@ export default function Home() {
               icon: "tabler:arrow-right",
             },
           ]}
+          // image={{
+          //   src: "./vinyl-collection.jpg",
+          //   alt: "Vinyl collection",
+          //   className: "w-full h-auto",
+          // }}
           clientsLabel="Trusted by Music Lovers Everywhere"
           clients={clients}
         />
+
+        {/* Featured Reviews */}
+        <FeatureSection
+          id="featured-reviews"
+          title="Featured Reviews"
+          description="New spins and deep cuts. Here's what's on our turntable this week."
+          features={features}
+        />
+
+        {/* Top Picks */}
+        <section id="top-picks" className="py-16 bg-white">
+          <div className="container mx-auto px-4 text-center mb-10">
+            <h2 className="text-4xl font-bold">Top 3 Picks This Month</h2>
+            <p className="text-gray-600 mt-2">Our current obsessions – carefully spun and selected.</p>
+          </div>
+          <LargeFeatureSection
+            reverse
+            title={"Spread"}
+            list={highlightedArtists.slice(0, 1)} // use top 3 albums
+            image={{
+              src: "./outkast.jpg",
+              alt: "Top Picks Album Stack",
+              className: "w-full object-contain rotate-3 hover:rotate-0 transition-all",
+            }}
+          />
+          <LargeFeatureSection
+            id="about-me"
+            title="Sweet Leaf"
+            list={highlightedArtists.slice(1, 2)} // again, use album data
+            image={{
+              src: "./black-sabbath-sweet-leaf-enamel-pin.webp",
+              alt: "Turntable",
+              className: "w-full object-contain rotate-3 hover:rotate-0 transition-all",
+            }}
+          />
+          <LargeFeatureSection
+            reverse
+            id="blog"
+            title="MUTT"
+            list={highlightedArtists.slice(2, 3)} // use blog post titles & blurbs
+            image={{
+              src: "./muttleonthomas.jpg",
+              alt: "Vinyl stack",
+              className: "w-full object-contain -rotate-3 hover:rotate-0 transition-all",
+            }}
+          />
+        </section>
 
         {/* About Section */}
         <section id="about" className="bg-gray-100 py-16">
@@ -96,12 +155,12 @@ export default function Home() {
             </p>
             <div className="mt-8 flex justify-center">
               <Image
-                src="/mattuglyahh.png"
-                alt="Author"
-                width={192}
-                height={192}
-                className="rounded-full object-cover shadow-lg"
-              />
+  src="/mattuglyahh.png"
+  alt="Author"
+  width={192}       // 48 * 4 (tailwind width 48 = 12rem = 192px)
+  height={192}      // same as width for square
+  className="rounded-full object-cover shadow-lg"
+/>
             </div>
           </div>
         </section>
@@ -109,7 +168,7 @@ export default function Home() {
         {/* Blog Preview */}
         <section id="blog" className="bg-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6">The Blog</h2>
+            <h2 className="text-4xl font-bold mb-6"> The Blog</h2>
             <p className="text-gray-600 max-w-xl mx-auto mb-8">
               Tips, stories, and behind-the-scenes from the music world.
             </p>
@@ -119,8 +178,7 @@ export default function Home() {
               image={{
                 src: "./vinly-pic.jpg",
                 alt: "Blog Feature",
-                className:
-                  "w-full object-contain -rotate-3 hover:rotate-0 transition-all",
+                className: "w-full object-contain -rotate-3 hover:rotate-0 transition-all",
               }}
             />
           </div>
@@ -133,6 +191,7 @@ export default function Home() {
             <p className="text-gray-600 max-w-xl mx-auto mb-8">
               Deep dives into classic albums, hidden gems, and fresh spins from today's artists.
             </p>
+
             <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
               {articles.slice(0, 3).map((article) => (
                 <div
@@ -141,15 +200,13 @@ export default function Home() {
                 >
                   <h3 className="text-2xl font-semibold mb-2">{article.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
-                  <Link
-                    href={`/articles/${article.slug}`}
-                    className="text-blue-600 font-medium"
-                  >
+                  <Link href={`/articles/${article.slug}`} className="text-blue-600 font-medium">
                     Read More →
                   </Link>
                 </div>
               ))}
             </div>
+
             <div className="mt-10">
               <Link href="/articles" className="text-black font-bold underline">
                 View All Articles
@@ -163,6 +220,8 @@ export default function Home() {
           id="newsletter"
           title="Get the Drop on New Vinyl Reviews"
           description="Subscribe to our newsletter for weekly drops, discounts, and exclusive vinyl picks."
+          
+          
         />
 
         {/* Footer */}
