@@ -38,8 +38,11 @@ export default function Home() {
       <div
         style={{
            position: "relative",
-    backgroundImage: "url('./ADAMS JOURNAL.png')",
+    backgroundImage: "url('/bgImage.jpg')",
     minHeight: "100vh",
+    backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+
    // optional: default text color on dark background
         }}
       >
